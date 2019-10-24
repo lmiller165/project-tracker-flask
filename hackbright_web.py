@@ -57,6 +57,18 @@ def student_add():
     return render_template("student_added.html", first=first_name, last=last_name)
 
 
+@app.route("/project")
+def list_project_info():
+    """List title, description, and max grade of a project."""
+
+    if request.args.get('title'):
+        title = request.args.get('title')
+
+    project_info = hackbright.get_project_by_title(title)
+
+    html = render_template("project_info.html", project_info=project_info)
+
+    return html
 
 
 if __name__ == "__main__":

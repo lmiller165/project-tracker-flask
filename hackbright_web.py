@@ -66,7 +66,10 @@ def list_project_info():
 
     project_info = hackbright.get_project_by_title(title)
 
-    html = render_template("project_info.html", project_info=project_info)
+    grade_list = hackbright.get_grades_by_title(title)
+
+    html = render_template("project_info.html", project_info=project_info,
+                                                grade_list=grade_list)
 
     return html
 

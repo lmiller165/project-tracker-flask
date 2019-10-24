@@ -7,6 +7,15 @@ import hackbright
 app = Flask(__name__)
 app.secret_key = "SEEKRIT"
 
+@app.route("/")
+def homepage():
+    """Display all projects and all students."""
+    project_list = hackbright.get_all_projects()
+    student_list = hackbright.get_all_students()
+
+    return render_template("home.html", project_list=project_list, student_list=student_list)
+
+
 @app.route("/student")
 def get_student():
     """Show information about a student."""
